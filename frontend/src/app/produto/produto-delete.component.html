@@ -1,0 +1,13 @@
+<div class="container">
+    <br />
+    <br />
+    <br />
+    <div>
+        <h2>
+            Deseja realmente excluir o produto {{ produto.nome }}?
+        </h2>
+        <br />
+        <button class="btn btn-danger" style="margin-right: 2%;" (click)="deletar()">Sim</button>
+        <button class="btn btn-light" [routerLink]="['/produtos']">Não</button>
+    </div>
+</div>

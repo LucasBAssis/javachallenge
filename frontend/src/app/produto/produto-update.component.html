@@ -1,0 +1,33 @@
+<div class="container">
+  <br />
+  <br />
+  <br />
+  <form (ngSubmit)="save()">
+    <div class="form-group">
+      <div class="row">
+        <div class="col-12">
+          <label for="nome">Nome</label>
+          <input type="text" class="form-control" id="nome" name="note" [(ngModel)]="produto.nome" placeholder="Nome" [readonly]="this.id">
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-6">
+          <label for="categoria">Categoria</label>
+          <select class="form-control" id="categoria" name="categoria" [(ngModel)]="produto.categoria">
+            <option value="PERECIVEL">PERECIVEL</option>
+            <option value="NAO_PERECIVEL">NAO PERECIVEL</option>
+          </select>
+        </div>
+        <div class="col-6">
+          <label for="nome">Valor</label>
+          <input type="text" class="form-control" id="valor" name="valor" placeholder="0,0" [textMask]="{mask: numberMask}" (change)="changeValor()" [(ngModel)]="valor" >
+        </div>
+      </div>
+    </div>
+    <br />
+    <button type="submit" class="btn btn-success" style="margin-right: 2%;">Salvar</button>
+    <button class="btn btn-light" [routerLink]="['/produtos']">Cancelar</button>
+  </form>
+</div>

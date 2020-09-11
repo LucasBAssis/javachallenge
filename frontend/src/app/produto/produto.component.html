@@ -1,0 +1,56 @@
+<div class="container">
+
+  <br />
+  <br />
+  <br />
+  <div>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-6">
+          <label for="nome">Nome</label>
+          <input type="text" class="form-control" id="nome" placeholder="Nome" [(ngModel)]="filtros.nome">
+        </div>
+        <div class="col-6">
+          <label for="categoria">Categoria</label>
+          <select class="form-control" id="categoria" [(ngModel)]="filtros.categoria">
+            <option value=""></option>
+            <option value="PERECIVEL">PERECIVEL</option>
+            <option value="NAO_PERECIVEL">NAO PERECIVEL</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <button type="button" class="btn btn-primary" (click)="filtrar()">Filtrar</button>
+    <button type="button" class="btn btn-primary" style="margin-left: 5px;" (click)="limparFiltros()">Limpar</button>
+  </div>
+
+  <br />
+  <br />
+  <table class="table" cellpadding="0" cellspacing="0" width="100%">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">NOME</th>
+        <th scope="col">CATEGORIA</th>
+        <th scope="col">VALOR</th>
+        <th>AÇÕES</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let produto of produtos">
+        <th scope="row">{{produto.id}}</th>
+        <td>{{produto.nome}}</td>
+        <td>{{produto.categoria}}</td>
+        <td>{{produto.valor | currency:'BRL'}}</td>
+        <td>
+          <a class="btn btn-success" style="margin-right: 2%;" [routerLink]="['/produtos/edit', produto.id]">Editar</a>
+          <a class="btn btn-warning" style="margin-right: 2%;" [routerLink]="['/produtos/view', produto.id]">Visualizar</a>
+          <a class="btn btn-danger" [routerLink]="['/produtos/delete', produto.id]">Deletar</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div>
+    <a class="btn btn-primary" [routerLink]="['/produtos/novo']">Criar</a>
+  </div>
+</div>
